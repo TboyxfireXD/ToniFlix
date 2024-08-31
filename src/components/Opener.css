@@ -1,0 +1,25 @@
+.entity{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.texts{
+    display: inline;
+    justify-content: center;
+    align-content: center;
+    margin: 50px;
+    padding: 5px;
+    color: white;
+    width: 50%;
+}
+
+.texts h1{
+    font-size: 55px;
+}
+
+.texts p{
+    font-size: 20px;
+}

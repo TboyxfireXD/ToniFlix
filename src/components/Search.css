@@ -1,0 +1,48 @@
+.search-container {
+  padding: 20px;
+}
+
+.inp{
+  text-align: center;
+  padding: 20px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: black;
+}
+
+.search-container p {
+  color: white;
+  font-size: 18px;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.pagination-controls button {
+  border: none;
+  padding: 5px 15px;
+  margin: 0 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.page-number {
+  font-size: 18px;
+  margin: 0 10px;
+}

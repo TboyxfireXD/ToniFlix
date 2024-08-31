@@ -1,0 +1,51 @@
+.ctrl {
+  height: fit-content;
+  width: 100%;
+  background-color: gray;
+}
+
+.movie-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.1); /* Enlarge the card slightly */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow for better effect */
+}
+
+.mb-4 {
+  margin-bottom: 2rem !important; /* Increase vertical spacing */
+}
+
+.d-flex {
+  margin-bottom: 2rem; /* Ensure there’s enough space between rows */
+}
+
+.card {
+  margin: 0 1rem; /* Add horizontal spacing between cards */
+}
+
+nav {
+  color: white;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+nav ul li {
+  list-style: none;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 10px;
+  margin-right: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #333; /* Optional: Add a hover effect */
+  transition: 0.5s;
+}

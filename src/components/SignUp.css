@@ -1,0 +1,42 @@
+.op{
+  backdrop-filter: blur(4px);
+}
+
+.signUp {
+  background-image: url("https://www.shutterstock.com/image-photo/affectionate-young-family-watching-tv-600nw-1516327862.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  min-height: 100vh;
+  color: white;
+  backdrop-filter: blur(4px);
+}
+
+.header {
+  text-align: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.sign-up {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  margin: 15px;
+  backdrop-filter: blur(4px);
+}
+
+.form {
+  display: inline;
+  width: 30%;
+  backdrop-filter: blur(4px);
+}
+
+footer {
+  color: white;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-top: 90px;
+  backdrop-filter: blur(4px);
+}

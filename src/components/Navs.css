@@ -1,0 +1,29 @@
+.custom-navbar {
+  background-color: transparent;
+}
+
+.custom-navbar .container {
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-navbar .navbar-collapse {
+  justify-content: center;
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav {
+  text-align: center;
+}
+
+.custom-navbar .nav-link,
+.custom-navbar{
+  color: #000; /* Initial text color */
+  transition: color 0.3s ease;
+  padding: 15px;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar{
+  color: #fff; /* Turn white on hover */
+}

@@ -1,0 +1,65 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 50px;
+  text-align: center;
+  color: black;
+}
+
+.text {
+  text-align: center;
+}
+
+.text h3{
+  font-size: 30px;
+}
+
+.sig {
+  text-align: center;
+  font-size: 20px;
+  margin: 45px;
+}
+
+.email {
+  text-align: center;
+  font-size: 16px;
+  margin: 5px;
+}
+
+.email p{
+  font-size: 17px;
+  text-decoration: solid;
+}
+
+.love {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 7px;
+  font-size: 20px;
+}
+
+.btn {
+  font-size: 20px;
+  text-decoration: solid;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.btn button {
+  margin: 20px;
+  padding: 10px;
+  background: none;
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.btn button:hover {
+  background-color: black;
+  transition: 1s;
+}

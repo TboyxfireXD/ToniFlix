@@ -1,0 +1,35 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  color: black;
+}
+
+.logo {
+  margin: 30px;
+  margin-left: 60px;
+  cursor: pointer;
+}
+
+h2 {
+  color: black;
+}
+
+.logo h2:hover {
+  color: antiquewhite;
+  transition: 1s;
+}
+
+.sign {
+  margin: 30px;
+  margin-right: 60px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  cursor: pointer;
+}
+
+.sign h2:hover {
+  color: antiquewhite;
+  transition: 1s;
+}
