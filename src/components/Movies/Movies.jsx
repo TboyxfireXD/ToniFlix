@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
-import Cards from "./Cards";
+import React, { useState } from "react";
 import "./Movies.css";
-import { Container, Row, Col } from "react-bootstrap";
-import { Context } from "../../App";
 import { Outlet, Link } from "react-router-dom";
 
 const Movies = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
   return (
     <div>
       <div className="ctrl">
@@ -13,11 +11,11 @@ const Movies = () => {
           <ul>
             <Link
               style={{ color: "white", textDecoration: "none" }}
-              to="/movies"
+              to="/movies/upcoming"
             >
               <li
                 style={{ backgroundColor: activeIndex === 0 ? "black" : "" }}
-                onClick={() => handleNavClick(0, "movie/upcoming")}
+                onClick={() => setActiveIndex(0)}
               >
                 Upcoming
               </li>
@@ -29,7 +27,7 @@ const Movies = () => {
             >
               <li
                 style={{ backgroundColor: activeIndex === 1 ? "black" : "" }}
-                onClick={() => handleNavClick(1, "movie/popular")}
+                onClick={() => setActiveIndex(1)}
               >
                 Popular
               </li>
@@ -41,7 +39,7 @@ const Movies = () => {
             >
               <li
                 style={{ backgroundColor: activeIndex === 2 ? "black" : "" }}
-                onClick={() => handleNavClick(2, "movie/top_rated")}
+                onClick={() => setActiveIndex(2)}
               >
                 Top Rated
               </li>
@@ -53,7 +51,7 @@ const Movies = () => {
             >
               <li
                 style={{ backgroundColor: activeIndex === 3 ? "black" : "" }}
-                onClick={() => handleNavClick(3, "movie/now_playing")}
+                onClick={() => setActiveIndex(3)}
               >
                 Now Playing
               </li>
@@ -65,7 +63,7 @@ const Movies = () => {
             >
               <li
                 style={{ backgroundColor: activeIndex === 4 ? "black" : "" }}
-                onClick={() => handleNavClick(4, "trending/movie/day")}
+                onClick={() => setActiveIndex(4)}
               >
                 Trending
               </li>
@@ -76,7 +74,7 @@ const Movies = () => {
             >
               <li
                 style={{ backgroundColor: activeIndex === 5 ? "black" : "" }}
-                onClick={() => handleNavClick(5, "")}
+                onClick={() => setActiveIndex(5)}
               >
                 Search
               </li>
@@ -86,19 +84,6 @@ const Movies = () => {
       </div>
 
       <Outlet />
-      <Container>
-        <Row>
-          {movies.map((movie) => (
-            <Col
-              md={4}
-              className="mb-4 d-flex justify-content-center"
-              key={movie.id}
-            >
-              <Cards {...movie} />
-            </Col>
-          ))}
-        </Row>
-      </Container>
     </div>
   );
 };

@@ -54,11 +54,6 @@ const App = () => {
     <div>
       <Context.Provider
         value={{
-          movies,
-          setMovies,
-          activeIndex,
-          setActiveIndex,
-          handleNavClick,
           handleCardClick,
           cast,
           pag,

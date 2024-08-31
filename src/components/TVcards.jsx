@@ -1,7 +1,7 @@
 import React from "react";
 import { Accordion, Button, Card, Modal } from "react-bootstrap";
 import { useState } from "react";
-import "./Movies.css";
+import "./Movies/Movies.css";
 
 function TVcards({
   overview,

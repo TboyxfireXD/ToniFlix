@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Cards from "./Cards";
 import "./Movies.css";
 import { Container, Row, Col } from "react-bootstrap";
@@ -20,17 +21,13 @@ const Upcoming = () => {
     }
   };
 
-  const handleNavClick = (index, link) => {
-    setActiveIndex(index);
-    if (link) {
-      fetchMovies(link);
-    } else {
-      setMovies([]); // Clear movies when navigating to the search
-    }
+  const handleNavClick = (index) => {
+    fetchMovies()
+    setActiveIndex(index)
   };
 
   useEffect(() => {
-    handleNavClick(0, "movie/upcoming"); // Fetch upcoming movies by default
+    handleNavClick(0); // Fetch upcoming movies by default
   }, []);
 
   return (
