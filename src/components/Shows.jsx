@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TVcards from "./TVcards";
-import "./Movies.css";
+import "./Movies/Movies.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom"; // Import Link
 

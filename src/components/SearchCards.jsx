@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../App";
 import { Accordion, Button, Card, Modal } from "react-bootstrap";
-import "./Movies.css";
+import "./Movies/Movies.css";
 
 function SearchCards({
   title,

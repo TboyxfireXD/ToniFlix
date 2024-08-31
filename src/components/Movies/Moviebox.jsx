@@ -1,9 +1,9 @@
 import React from "react";
 import Movies from "./Movies";
-import Navs from "./Navs";
+import Navs from "../Navs";
 import Opener from "./Opener";
-import Footer from "./Footer";
-import fav from "./img/fav.jpg";
+import Footer from "../Footer";
+import fav from "../img/fav.jpg";
 
 const Moviebox = () => {
   const styling = {

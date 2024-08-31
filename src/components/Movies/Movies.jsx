@@ -2,12 +2,10 @@ import React, { useContext } from "react";
 import Cards from "./Cards";
 import "./Movies.css";
 import { Container, Row, Col } from "react-bootstrap";
-import { Context } from "../App";
+import { Context } from "../../App";
 import { Outlet, Link } from "react-router-dom";
 
 const Movies = () => {
-  const { movies, activeIndex, handleNavClick } = useContext(Context);
-
   return (
     <div>
       <div className="ctrl">
