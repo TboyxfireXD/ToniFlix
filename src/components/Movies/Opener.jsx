@@ -1,5 +1,5 @@
 import React from "react";
-import './Opener.css'
+import '../TV/Opener.css'
 
 const Opener = () => {
   return (

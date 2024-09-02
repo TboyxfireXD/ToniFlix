@@ -49,3 +49,24 @@ li:hover {
   background-color: #333; /* Optional: Add a hover effect */
   transition: 0.5s;
 }
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.pagination-controls button {
+  border: none;
+  padding: 5px 15px;
+  margin: 0 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.page-number {
+  color: white;
+  font-size: 18px;
+  margin: 0 10px;
+}

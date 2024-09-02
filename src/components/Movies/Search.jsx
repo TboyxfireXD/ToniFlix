@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { Context } from "../App";
+import { Context } from "../../App";
 import SearchCards from "./SearchCards";
 import axios from "axios";
-import "./Search.css";
+import "../TV/Search.css";
 
 const Search = () => {
   const [look, setLook] = useState("");
@@ -44,7 +44,7 @@ const Search = () => {
   const handleNextPage = () => {
     setPag((prevPag) => {
       const newPage = prevPag + 1;
-      fetch(look, newPage); // Fetch results for the new page
+      fetch(newPage); // Fetch results for the new page
       return newPage;
     });
   };
@@ -52,7 +52,7 @@ const Search = () => {
   const handlePreviousPage = () => {
     setPag((prevPag) => {
       const newPage = Math.max(prevPag - 1, 1);
-      fetch(look, newPage); // Fetch results for the new page
+      fetch(newPage); // Fetch results for the new page
       return newPage;
     });
   };

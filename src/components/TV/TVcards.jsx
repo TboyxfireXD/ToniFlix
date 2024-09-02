@@ -1,34 +1,38 @@
-import React, { useContext, useState } from "react";
-import { Context } from "../App";
+import React from "react";
 import { Accordion, Button, Card, Modal } from "react-bootstrap";
-import "./Movies/Movies.css";
+import { useState, useContext } from "react";
+import "./Movies.css";
+import { Context } from "../../App";
 
-function SearchCards({
-  title,
+function TVcards({
   overview,
+  name,
   poster_path,
   vote_count,
-  release_date,
+  first_air_date,
   vote_average,
   id,
 }) {
-    
-  const [show, setShow] = useState(false);
-  const {cast, handleCardClick} = useContext(Context);
+  const { cast, handleCardClicks } = useContext(Context);
   const imageUrl = "https://image.tmdb.org/t/p/w500";
-  const handleShow = () => {
-    setShow(!show);
-    handleCardClick(id); // Fetch the cast when the modal is shown
+  const [show, setShow] = useState(false);
+
+  const handleShow = async () => {
+    await handleCardClicks(id); // Ensure cast data is fetched before showing modal
+    setShow(true);
   };
 
+  const handleClose = () => setShow(false);
+
+  // Separate cast members with and without profile pictures
   const filteredCast = cast.filter((castMember) => castMember.profile_path);
   const unfilteredCast = cast.filter((castMember) => !castMember.profile_path);
 
   return (
     <Card style={{ marginTop: "30px" }} className="movie-card">
-      <Card.Img variant="top" src={imageUrl + poster_path} alt={title} />
+      <Card.Img variant="top" src={imageUrl + poster_path} alt={name} />
       <Card.Body>
-        <Card.Title className="text-center">{title}</Card.Title>
+        <Card.Title className="text-center">{name}</Card.Title>
         <Accordion>
           <Accordion.Item eventKey="0">
             <Accordion.Header>Description</Accordion.Header>
@@ -38,15 +42,15 @@ function SearchCards({
       </Card.Body>
 
       <Button onClick={handleShow}>View More</Button>
-      <Modal show={show} onHide={handleShow}>
+
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{title}</Modal.Title>
+          <Modal.Title>{name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <img
-            variant="top"
             src={imageUrl + poster_path}
-            alt={title}
+            alt={name}
             style={{
               width: "100%",
               height: "auto",
@@ -62,7 +66,7 @@ function SearchCards({
             </p>
             <p style={{ marginBottom: "1rem" }}>{overview}</p>
             <p style={{ marginBottom: "0.5rem" }}>
-              <strong>Release Date:</strong> {release_date}
+              <strong>First Air Date:</strong> {first_air_date}
             </p>
             <p style={{ marginBottom: "0.5rem" }}>
               <strong>Vote Count:</strong> {vote_count}
@@ -72,28 +76,42 @@ function SearchCards({
             </p>
             <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>Cast:</p>
             {filteredCast.map((castMember) => (
-              <p key={castMember.cast_id}>
+              <p
+                key={castMember.cast_id}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginBottom: "1rem",
+                }}
+              >
                 <img
                   src={imageUrl + castMember.profile_path}
                   alt={castMember.name}
                   style={{
-                    width: "50px",
-                    height: "50px",
+                    width: "60px",
+                    height: "60px",
                     objectFit: "cover",
                     marginRight: "10px",
                   }}
                 />
-                <strong>{castMember.name}</strong> as {castMember.character}
+                <span>
+                  <strong>{castMember.name}</strong> as{" "}
+                  {castMember.character}
+                </span>
               </p>
             ))}
-            <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>
-              Others:
-            </p>
-            {unfilteredCast.map((casts) => (
-              <p key={casts.id}>
-                <strong>{casts.name}</strong> as {casts.character}
-              </p>
-            ))}
+            {unfilteredCast.length > 0 && (
+              <>
+                <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>
+                  Others:
+                </p>
+                {unfilteredCast.map((casts) => (
+                  <p key={casts.cast_id}>
+                    <strong>{casts.name}</strong> as {casts.character}
+                  </p>
+                ))}
+              </>
+            )}
           </div>
         </Modal.Body>
       </Modal>
@@ -101,4 +119,4 @@ function SearchCards({
   );
 }
 
-export default SearchCards;
+export default TVcards;

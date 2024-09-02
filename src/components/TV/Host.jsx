@@ -1,5 +1,5 @@
 import React from "react";
-import "./Movies/Opener.css";
+import "./Opener.css";
 
 const Opener = () => {
   return (

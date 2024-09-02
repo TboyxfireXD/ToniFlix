@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Context } from "../App";
+import { Context } from "../../App";
 import { Container, Row, Col } from "react-bootstrap";
 import TVsearchcards from "./TVsearchcards";
 import axios from "axios";

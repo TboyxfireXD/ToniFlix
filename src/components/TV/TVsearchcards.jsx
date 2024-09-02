@@ -1,31 +1,30 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { Context } from "../../App";
 import { Accordion, Button, Card, Modal } from "react-bootstrap";
-import { useState } from "react";
-import "./Movies/Movies.css";
+import "./Movies.css";
 
-function TVcards({
-  overview,
+function TVsearchCards({
   name,
+  popularity,
+  overview,
   poster_path,
   vote_count,
   first_air_date,
   vote_average,
-  onClick,
   id,
-  cast,
 }) {
-  const imageUrl = "https://image.tmdb.org/t/p/w500";
   const [show, setShow] = useState(false);
+  const { cast, handleCardClicks } = useContext(Context);
+  const imageUrl = "https://image.tmdb.org/t/p/w500";
 
-  const handleShow = () => {
+  const handleShow = async () => {
+    await handleCardClicks(id); // Ensure cast data is fetched before showing modal
     setShow(true);
-    onClick(id); // Fetch the cast when the modal is shown
   };
 
-  const handleClose = () => {
-    setShow(false);
-  };
+  const handleClose = () => setShow(false);
 
+  // Separate cast members with and without profile pictures
   const filteredCast = cast.filter((castMember) => castMember.profile_path);
   const unfilteredCast = cast.filter((castMember) => !castMember.profile_path);
 
@@ -33,7 +32,7 @@ function TVcards({
     <Card style={{ marginTop: "30px" }} className="movie-card">
       <Card.Img variant="top" src={imageUrl + poster_path} alt={name} />
       <Card.Body>
-        <Card.Title className="text-center">{name}</Card.Title>
+        <Card.Title className="text-center"> {name} </Card.Title>
         <Accordion>
           <Accordion.Item eventKey="0">
             <Accordion.Header>Description</Accordion.Header>
@@ -43,13 +42,13 @@ function TVcards({
       </Card.Body>
 
       <Button onClick={handleShow}>View More</Button>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <img
-            variant="top"
             src={imageUrl + poster_path}
             alt={name}
             style={{
@@ -70,6 +69,9 @@ function TVcards({
               <strong>First Air Date:</strong> {first_air_date}
             </p>
             <p style={{ marginBottom: "0.5rem" }}>
+              <strong>Popularity:</strong> {popularity}
+            </p>
+            <p style={{ marginBottom: "0.5rem" }}>
               <strong>Vote Count:</strong> {vote_count}
             </p>
             <p style={{ marginBottom: "0.5rem" }}>
@@ -77,36 +79,32 @@ function TVcards({
             </p>
             <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>Cast:</p>
             {filteredCast.map((castMember) => (
-              <p
-                key={castMember.cast_id}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginBottom: "1rem",
-                }}
-              >
+              <p key={castMember.cast_id}>
                 <img
                   src={imageUrl + castMember.profile_path}
                   alt={castMember.name}
                   style={{
-                    width: "50px",
-                    height: "50px",
-                    borderRadius: "50%",
+                    width: "60px",
+                    height: "60px",
                     objectFit: "cover",
                     marginRight: "10px",
                   }}
                 />
-                <span>
-                  <strong>{castMember.original_name}</strong> as{" "}
-                  {castMember.character}
-                </span>
+                <strong>{castMember.name}</strong> as {castMember.character}
               </p>
             ))}
-            {unfilteredCast.map((casts) => (
-              <p key={casts.id}>
-                <strong>{casts.name}</strong> as {casts.character}
-              </p>
-            ))}
+            {unfilteredCast.length > 0 && (
+              <>
+                <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>
+                  Others:
+                </p>
+                {unfilteredCast.map((casts) => (
+                  <p key={casts.cast_id}>
+                    <strong>{casts.name}</strong> as {casts.character}
+                  </p>
+                ))}
+              </>
+            )}
           </div>
         </Modal.Body>
       </Modal>
@@ -114,4 +112,4 @@ function TVcards({
   );
 }
 
-export default TVcards;
+export default TVsearchCards;

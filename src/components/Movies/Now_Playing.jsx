@@ -5,7 +5,7 @@ import Cards from "./Cards";
 import "../TV/Movies.css";
 import { Container, Row, Col } from "react-bootstrap";
 
-const Upcoming = () => {
+const Now_Playing = () => {
   const [movies, setMovies] = useState([]);
   const { pag, setPag } = useContext(Context);
   const a = ">";
@@ -14,7 +14,7 @@ const Upcoming = () => {
   const fetchMovies = async (no) => {
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/upcoming?include_adult=false&language=en-US&page=${no}`, // Corrected URL
+        `https://api.themoviedb.org/3/movie/now_playing?include_adult=false&language=en-US&page=${no}`, // Corrected URL
         {
           params: {
             api_key: "5f13d4e3e7df06b5fb904015b934cc00",
@@ -73,4 +73,4 @@ const Upcoming = () => {
   );
 };
 
-export default Upcoming;
+export default Now_Playing;

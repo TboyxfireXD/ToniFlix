@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import "./Movies.css";
+import React, { useContext } from "react";
+import "../TV/Movies.css";
 import { Outlet, Link } from "react-router-dom";
+import { Context } from "../../App";
 
 const Movies = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const {activeIndex, setActiveIndex} = useContext(Context)
   return (
     <div>
       <div className="ctrl">
@@ -23,7 +24,7 @@ const Movies = () => {
 
             <Link
               style={{ color: "white", textDecoration: "none" }}
-              to="/movies"
+              to="/movies/popular"
             >
               <li
                 style={{ backgroundColor: activeIndex === 1 ? "black" : "" }}
@@ -35,7 +36,7 @@ const Movies = () => {
 
             <Link
               style={{ color: "white", textDecoration: "none" }}
-              to="/movies"
+              to="/movies/top_rated"
             >
               <li
                 style={{ backgroundColor: activeIndex === 2 ? "black" : "" }}
@@ -47,7 +48,7 @@ const Movies = () => {
 
             <Link
               style={{ color: "white", textDecoration: "none" }}
-              to="/movies"
+              to="/movies/now_playing"
             >
               <li
                 style={{ backgroundColor: activeIndex === 3 ? "black" : "" }}
@@ -59,7 +60,7 @@ const Movies = () => {
 
             <Link
               style={{ color: "white", textDecoration: "none" }}
-              to="/movies"
+              to="/movies/trending"
             >
               <li
                 style={{ backgroundColor: activeIndex === 4 ? "black" : "" }}

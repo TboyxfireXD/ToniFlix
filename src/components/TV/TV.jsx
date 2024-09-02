@@ -1,9 +1,9 @@
 import React from "react";
 import Host from "./Host";
-import Footer from "./Footer";
+import Footer from "../Footer";
 import Shows from "./Shows";
-import tv from "./img/tv.jpg";
-import Navs from "./Navs";
+import tv from "../img/tv.jpg";
+import Navs from "../Navs";
 
 const TV = () => {
   const stylings = {
