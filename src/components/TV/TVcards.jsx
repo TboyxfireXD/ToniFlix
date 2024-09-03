@@ -1,5 +1,6 @@
 import React from "react";
 import { Accordion, Button, Card, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import "./Movies.css";
 import { Context } from "../../App";
@@ -77,13 +78,15 @@ function TVcards({
             </p>
 
             <p style={{ marginBottom: "0.5rem", cursor: "pointer" }}>
-              <strong onClick={() => handleVideoClicks(id)}>
-                Get Trailer
-              </strong>
+              <strong onClick={() => handleVideoClicks(id)}>Get Trailer</strong>
             </p>
 
             {video.map((link) => (
-              <p key={link.id}>{`https://www.youtube.com/watch?v=${link.key}`}</p>
+              <p key={link.id}>
+                <Link
+                  to={`https://www.youtube.com/watch?v=${link[0].key}`}
+                >{`https://www.youtube.com/watch?v=${link[0].key}`}</Link>
+              </p>
             ))}
 
             <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>Cast:</p>

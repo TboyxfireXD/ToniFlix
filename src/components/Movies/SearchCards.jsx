@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../App";
 import { Link } from "react-router-dom";
 import { Accordion, Button, Card, Modal } from "react-bootstrap";
@@ -12,21 +12,18 @@ function SearchCards({
   release_date,
   vote_average,
   id,
-  
 }) {
   const [show, setShow] = useState(false);
   const { cast, handleCardClick, handleVideoClick, videos } =
-  useContext(Context);
+    useContext(Context);
   const imageUrl = "https://image.tmdb.org/t/p/w500";
 
   const handleShow = async () => {
-    await handleCardClick(id); // Ensure cast data is fetched before showing modal
-    setShow(true);
+    await handleCardClick(id);
+    await handleVideoClick(id);
+    setShow(!show);
   };
 
-  const handleClose = () => setShow(false);
-
-  // Separate cast members with and without profile pictures
   const filteredCast = cast.filter((castMember) => castMember.profile_path);
   const unfilteredCast = cast.filter((castMember) => !castMember.profile_path);
 
@@ -45,7 +42,7 @@ function SearchCards({
 
       <Button onClick={handleShow}>View More</Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleShow}>
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
@@ -77,15 +74,16 @@ function SearchCards({
               <strong>Vote Average:</strong> {vote_average}
             </p>
             <p style={{ marginBottom: "0.5rem", cursor: "pointer" }}>
-              <strong onClick={() => handleVideoClick(id)}>
-                Get Trailer
-              </strong>
+              <strong onClick={() => handleShow(id)}>Trailer</strong>
             </p>
 
-            {videos.map((link) => (
-              <p key={link.id}>
-                <Link to={`https://www.youtube.com/watch?v=${link.key}`}>{`https://www.youtube.com/watch?v=${link.key}`}</Link></p>
-            ))}
+            {videos.length > 0 && (
+              <p>
+                <Link to={`https://www.youtube.com/watch?v=${videos[0].key}`}>
+                  {videos[0].key === null ? "No Trailer Available" : `https://www.youtube.com/watch?v=${videos[0].key}`}
+                </Link>
+              </p>
+            )}
 
             <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>Cast:</p>
             {filteredCast.map((castMember) => (

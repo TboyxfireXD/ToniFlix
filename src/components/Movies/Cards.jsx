@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Accordion, Button, Card, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "../TV/Movies.css";
 import { Context } from "../../App";
 

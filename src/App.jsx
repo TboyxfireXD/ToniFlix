@@ -68,13 +68,16 @@ const App = () => {
       const response = await axios.get(
         `https://api.themoviedb.org/3/tv/${id}/videos`,
         {
-          params: { api_key: "5f13d4e3e7df06b5fb904015b934cc00",},
+          params: { api_key: "5f13d4e3e7df06b5fb904015b934cc00" },
         }
       );
-      setVideo(response.data.results);
-      console.log(response.data.results);
+      if (response.data.results.length > 0) {
+        setVideo([response.data.results[0]]); // Set only the first video
+      } else {
+        setVideo([]); // No videos available
+      }
     } catch (error) {
-      console.error("Error fetching movie video: ", error);
+      console.error("Error fetching TV video: ", error);
     }
   };
 
@@ -83,11 +86,14 @@ const App = () => {
       const response = await axios.get(
         `https://api.themoviedb.org/3/movie/${id}/videos`,
         {
-          params: { api_key: "5f13d4e3e7df06b5fb904015b934cc00",},
+          params: { api_key: "5f13d4e3e7df06b5fb904015b934cc00" },
         }
       );
-      setVideos(response.data.results);
-      console.log(response.data.results);
+      if (response.data.results.length > 0) {
+        setVideos([response.data.results[0]]); // Set only the first video
+      } else {
+        setVideos([]); // No videos available
+      }
     } catch (error) {
       console.error("Error fetching movie video: ", error);
     }
@@ -108,7 +114,7 @@ const App = () => {
           handleVideoClick,
           videos,
           video,
-          }}
+        }}
       >
         <Router>
           <Routes>
@@ -124,7 +130,7 @@ const App = () => {
             <Route path="/tvshows" element={<TV />}>
               <Route path="search" element={<TVsearch />} />
               <Route path="airing_today" element={<Airing_today />} />
-              <Route path="on_the_air" element={<On_the_air/>} />
+              <Route path="on_the_air" element={<On_the_air />} />
               <Route path="popular" element={<Populatv />} />
               <Route path="top_rated" element={<Top_ratedtv />} />
               <Route path="trending" element={<Trendingtv />} />
