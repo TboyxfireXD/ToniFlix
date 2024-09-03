@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -26,6 +26,8 @@ export const Context = createContext();
 
 const App = () => {
   const [cast, setCast] = useState([]);
+  const [video, setVideo] = useState([]);
+  const [videos, setVideos] = useState([]);
   const [pag, setPag] = useState(1);
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -60,6 +62,36 @@ const App = () => {
       console.error("Error fetching movie cast: ", error);
     }
   };
+  
+  const handleVideoClicks = async (id) => {
+    try {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/tv/${id}/videos`,
+        {
+          params: { api_key: "5f13d4e3e7df06b5fb904015b934cc00",},
+        }
+      );
+      setVideo(response.data.results);
+      console.log(response.data.results);
+    } catch (error) {
+      console.error("Error fetching movie video: ", error);
+    }
+  };
+
+  const handleVideoClick = async (id) => {
+    try {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}/videos`,
+        {
+          params: { api_key: "5f13d4e3e7df06b5fb904015b934cc00",},
+        }
+      );
+      setVideos(response.data.results);
+      console.log(response.data.results);
+    } catch (error) {
+      console.error("Error fetching movie video: ", error);
+    }
+  };
 
   return (
     <div>
@@ -71,7 +103,11 @@ const App = () => {
           pag,
           setPag,
           activeIndex,
-          setActiveIndex
+          setActiveIndex,
+          handleVideoClicks,
+          handleVideoClick,
+          videos,
+          video,
           }}
       >
         <Router>

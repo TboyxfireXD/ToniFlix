@@ -14,7 +14,8 @@ function TVsearchCards({
   id,
 }) {
   const [show, setShow] = useState(false);
-  const { cast, handleCardClicks } = useContext(Context);
+  const { cast, handleCardClicks, handleVideoClicks, video } =
+  useContext(Context);
   const imageUrl = "https://image.tmdb.org/t/p/w500";
 
   const handleShow = async () => {
@@ -77,6 +78,17 @@ function TVsearchCards({
             <p style={{ marginBottom: "0.5rem" }}>
               <strong>Vote Average:</strong> {vote_average}
             </p>
+
+            <p style={{ marginBottom: "0.5rem", cursor: "pointer" }}>
+              <strong onClick={() => handleVideoClicks(id)}>
+                Get Trailer
+              </strong>
+            </p>
+
+            {video.map((link) => (
+              <p key={link.id}>{`https://www.youtube.com/watch?v=${link.key}`}</p>
+            ))}
+            
             <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>Cast:</p>
             {filteredCast.map((castMember) => (
               <p key={castMember.cast_id}>

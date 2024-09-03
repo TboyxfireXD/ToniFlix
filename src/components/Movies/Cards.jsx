@@ -13,7 +13,8 @@ function Cards({
   id,
 }) {
 
-  const {cast, handleCardClick} = useContext(Context)
+  const { cast, handleCardClick, handleVideoClick, videos } =
+  useContext(Context);
   const imageUrl = "https://image.tmdb.org/t/p/w500";
   const [show, setShow] = useState(false);
 
@@ -72,6 +73,16 @@ function Cards({
             <p style={{ marginBottom: "0.5rem" }}>
               <strong>Vote Average:</strong> {vote_average}
             </p>
+            <p style={{ marginBottom: "0.5rem", cursor: "pointer" }}>
+              <strong onClick={() => handleVideoClick(id)}>
+                Get Trailer
+              </strong>
+            </p>
+
+            {videos.map((link) => (
+              <p key={link.id}>
+                <Link to={`https://www.youtube.com/watch?v=${link.key}`}>{`https://www.youtube.com/watch?v=${link.key}`}</Link></p>
+            ))}
             <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>Cast:</p>
             {filteredCast.map((castMembers) => (
               <p key={castMembers.cast_id}>
