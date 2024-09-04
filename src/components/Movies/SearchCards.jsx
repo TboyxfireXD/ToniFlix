@@ -73,16 +73,17 @@ function SearchCards({
             <p style={{ marginBottom: "0.5rem" }}>
               <strong>Vote Average:</strong> {vote_average}
             </p>
-            <p style={{ marginBottom: "0.5rem", cursor: "pointer" }}>
-              <strong onClick={() => handleShow(id)}>Trailer</strong>
-            </p>
 
-            {videos.length > 0 && (
-              <p>
-                <Link to={`https://www.youtube.com/watch?v=${videos[0].key}`}>
-                  {videos[0].key === null ? "No Trailer Available" : `https://www.youtube.com/watch?v=${videos[0].key}`}
-                </Link>
+            {videos.length > 0 ? (
+              <p style={{ marginBottom: "0.5rem", cursor: "pointer" }}>
+                <strong onClick={() => handleShow(id)}>
+                  <Link to={`https://www.youtube.com/watch?v=${videos[0].key}`}>
+                    Watch Trailer
+                  </Link>
+                </strong>
               </p>
+            ) : (
+              <p> <strong> No Trailer Available</strong></p>
             )}
 
             <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>Cast:</p>

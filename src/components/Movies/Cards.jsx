@@ -13,20 +13,20 @@ function Cards({
   vote_average,
   id,
 }) {
-
   const { cast, handleCardClick, handleVideoClick, videos } =
-  useContext(Context);
+    useContext(Context);
   const imageUrl = "https://image.tmdb.org/t/p/w500";
   const [show, setShow] = useState(false);
 
-  const handleShow = () => {
+  const handleShow = async () => {
+    await handleCardClick(id);
+    await handleVideoClick(id);
     setShow(!show);
-    handleCardClick(id); // Fetch the cast when the modal is shown
   };
 
   // Filter the cast to remove members without a profile_path
-  const filteredCast = cast.filter(castMember => castMember.profile_path);
-  const unfilteredCast = cast.filter(castMember => !castMember.profile_path);
+  const filteredCast = cast.filter((castMember) => castMember.profile_path);
+  const unfilteredCast = cast.filter((castMember) => !castMember.profile_path);
 
   return (
     <Card style={{ marginTop: "30px" }} className="movie-card">
@@ -74,16 +74,21 @@ function Cards({
             <p style={{ marginBottom: "0.5rem" }}>
               <strong>Vote Average:</strong> {vote_average}
             </p>
-            <p style={{ marginBottom: "0.5rem", cursor: "pointer" }}>
-              <strong onClick={() => handleVideoClick(id)}>
-                Get Trailer
-              </strong>
-            </p>
 
-            {videos.map((link) => (
-              <p key={link.id}>
-                <Link to={`https://www.youtube.com/watch?v=${link.key}`}>{`https://www.youtube.com/watch?v=${link.key}`}</Link></p>
-            ))}
+            {videos.length > 0 ? (
+              <p style={{ marginBottom: "0.5rem", cursor: "pointer" }}>
+                <strong onClick={() => handleShow(id)}>
+                  <Link to={`https://www.youtube.com/watch?v=${videos[0].key}`}>
+                    Watch Trailer
+                  </Link>
+                </strong>
+              </p>
+            ) : (
+              <p>
+                {" "}
+                <strong> No Trailer Available</strong>
+              </p>
+            )}
             <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>Cast:</p>
             {filteredCast.map((castMembers) => (
               <p key={castMembers.cast_id}>
@@ -100,10 +105,12 @@ function Cards({
                 <strong>{castMembers.name}</strong> as {castMembers.character}
               </p>
             ))}
-            <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>Others:</p>
-            {unfilteredCast.map((casts) =>(
+            <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>
+              Others:
+            </p>
+            {unfilteredCast.map((casts) => (
               <p key={casts.id}>
-                <strong>{casts.name}</strong>  as {casts.character}
+                <strong>{casts.name}</strong> as {casts.character}
               </p>
             ))}
           </div>

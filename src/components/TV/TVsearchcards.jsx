@@ -20,11 +20,10 @@ function TVsearchCards({
   const imageUrl = "https://image.tmdb.org/t/p/w500";
 
   const handleShow = async () => {
-    await handleCardClicks(id); // Ensure cast data is fetched before showing modal
-    setShow(true);
+    await handleCardClicks(id);
+    await handleVideoClicks(id);
+    setShow(!show);
   };
-
-  const handleClose = () => setShow(false);
 
   // Separate cast members with and without profile pictures
   const filteredCast = cast.filter((castMember) => castMember.profile_path);
@@ -45,7 +44,7 @@ function TVsearchCards({
 
       <Button onClick={handleShow}>View More</Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleShow}>
         <Modal.Header closeButton>
           <Modal.Title>{name}</Modal.Title>
         </Modal.Header>
@@ -80,17 +79,20 @@ function TVsearchCards({
               <strong>Vote Average:</strong> {vote_average}
             </p>
 
-            <p style={{ marginBottom: "0.5rem", cursor: "pointer" }}>
-              <strong onClick={() => handleVideoClicks(id)}>Get Trailer</strong>
-            </p>
-
-            {video.map((link) => (
-              <p key={link.id}>
-                <Link
-                  to={`https://www.youtube.com/watch?v=${link[0].key}`}
-                >{`https://www.youtube.com/watch?v=${link[0].key}`}</Link>
+            {video.length > 0 ? (
+              <p style={{ marginBottom: "0.5rem", cursor: "pointer" }}>
+                <strong onClick={() => handleShow(id)}>
+                  <Link to={`https://www.youtube.com/watch?v=${video[0].key}`}>
+                    Watch Trailer
+                  </Link>
+                </strong>
               </p>
-            ))}
+            ) : (
+              <p>
+                {" "}
+                <strong> No Trailer Available</strong>
+              </p>
+            )}
 
             <p style={{ marginBottom: "0.5rem", fontWeight: "bold" }}>Cast:</p>
             {filteredCast.map((castMember) => (
