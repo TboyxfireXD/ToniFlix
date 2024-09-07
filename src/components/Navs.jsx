@@ -2,10 +2,11 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./Navs.css";
 
 function Navs() {
-return (
+  return (
     <Navbar expand="lg" bg="transparent" className="custom-navbar">
       <Container className="justify-content-center">
         <Navbar.Brand href="/" className="mx-auto">
@@ -16,8 +17,8 @@ return (
           <Nav className="mx-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <NavDropdown title="Movies" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/movies/upcoming">
-                Upcoming
+              <NavDropdown.Item>
+                <Link to="/movies/upcoming"> Upcoming</Link>
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/movies/popular">

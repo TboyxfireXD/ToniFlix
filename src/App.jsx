@@ -91,7 +91,7 @@ const App = () => {
         }
       );
       if (response.data.results.length > 0) {
-        setVideos([response.data.results[0]]); // Set only the first video
+        setVideos([response.data.results[0]]);
       } else {
         setVideos([]); // No videos available
       }
