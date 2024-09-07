@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import TVcards from "./TVcards";
+import React, { useContext} from "react";
+import { Context } from "../../App";
 import "./Movies.css";
-import { Container, Row, Col } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom"; // Import Link
 
 const Shows = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const {activeIndexs, setActiveIndexs} = useContext(Context);
 
   return (
     <div>
@@ -17,10 +15,9 @@ const Shows = () => {
               to="/tvshows/airing_today"
               style={{ color: "white", textDecoration: "none" }}
             >
-              {" "}
               <li
-                style={{ backgroundColor: activeIndex === 0 ? "black" : "" }}
-                onClick={() => setActiveIndex(0)}
+                style={{ backgroundColor: activeIndexs === 6 ? "black" : "" }}
+                onClick={() => setActiveIndexs(6)}
               >
                 Airing Today
               </li>
@@ -31,8 +28,8 @@ const Shows = () => {
               style={{ color: "white", textDecoration: "none" }}
             >
               <li
-                style={{ backgroundColor: activeIndex === 1 ? "black" : "" }}
-                onClick={() => setActiveIndex(1)}
+                style={{ backgroundColor: activeIndexs === 7 ? "black" : "" }}
+                onClick={() => setActiveIndexs(7)}
               >
                 On the Air
               </li>
@@ -43,8 +40,8 @@ const Shows = () => {
               style={{ color: "white", textDecoration: "none" }}
             >
               <li
-                style={{ backgroundColor: activeIndex === 2 ? "black" : "" }}
-                onClick={() => setActiveIndex(2)}
+                style={{ backgroundColor: activeIndexs === 8 ? "black" : "" }}
+                onClick={() => setActiveIndexs(8)}
               >
                 Popular
               </li>
@@ -55,8 +52,8 @@ const Shows = () => {
               style={{ color: "white", textDecoration: "none" }}
             >
               <li
-                style={{ backgroundColor: activeIndex === 3 ? "black" : "" }}
-                onClick={() => setActiveIndex(3)}
+                style={{ backgroundColor: activeIndexs === 9 ? "black" : "" }}
+                onClick={() => setActiveIndexs(9)}
               >
                 Top Rated
               </li>
@@ -67,8 +64,8 @@ const Shows = () => {
               style={{ color: "white", textDecoration: "none" }}
             >
               <li
-                style={{ backgroundColor: activeIndex === 4 ? "black" : "" }}
-                onClick={() => setActiveIndex(4)}
+                style={{ backgroundColor: activeIndexs === 10 ? "black" : "" }}
+                onClick={() => setActiveIndexs(10)}
               >
                 Trending
               </li>
@@ -79,8 +76,8 @@ const Shows = () => {
               style={{ color: "white", textDecoration: "none" }}
             >
               <li
-                style={{ backgroundColor: activeIndex === 5 ? "black" : "" }}
-                onClick={() => setActiveIndex(5)}
+                style={{ backgroundColor: activeIndexs === 11 ? "black" : "" }}
+                onClick={() => setActiveIndexs(11)}
               >
                 Search
               </li>

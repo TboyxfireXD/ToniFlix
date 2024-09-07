@@ -7,7 +7,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const Trending = () => {
   const [movies, setMovies] = useState([]);
-  const { pag, setPag } = useContext(Context);
+  const { pag, setPag, setActiveIndex } = useContext(Context);
   const a = ">";
   const b = "<";
 
@@ -33,6 +33,11 @@ const Trending = () => {
       fetchMovies(pag); // Corrected to fetchMovies
     }
   }, [pag]);
+  
+  useEffect(() => {
+    setActiveIndex(4)
+  }
+  , [pag]);
 
   const handleNextPage = () => {
     setPag((prevPag) => {

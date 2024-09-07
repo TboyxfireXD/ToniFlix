@@ -8,7 +8,7 @@ import "./Search.css"; // Create a new CSS file for search styles if needed
 const TVsearch = () => {
   const [look, setLook] = useState("");
   const [result, setResult] = useState([]);
-  const { pag, setPag } = useContext(Context);
+  const { pag, setPag, setActiveIndexs} = useContext(Context);
   const a = ">";
   const b = "<";
 
@@ -34,6 +34,10 @@ const TVsearch = () => {
       fetch(look, pag);
     }
   }, [pag]);
+
+  useEffect(() => {
+    setActiveIndexs(11)
+  });
 
   const handleSearch = (e) => {
     const query = e.target.value;

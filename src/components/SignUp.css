@@ -1,5 +1,6 @@
 .op{
   backdrop-filter: blur(4px);
+  overflow-y: hidden;
 }
 
 .signUp {
@@ -10,6 +11,7 @@
   min-height: 100vh;
   color: white;
   backdrop-filter: blur(4px);
+  padding: 5px;
 }
 
 .header {
@@ -37,6 +39,11 @@ footer {
   color: white;
   cursor: pointer;
   margin-left: 20px;
-  margin-top: 90px;
+  margin-top: 30px;
   backdrop-filter: blur(4px);
+}
+
+.space{
+  backdrop-filter: blur(4px);
+  padding: 20px;
 }

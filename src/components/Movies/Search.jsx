@@ -8,7 +8,7 @@ import "../TV/Search.css";
 const Search = () => {
   const [look, setLook] = useState("");
   const [result, setResult] = useState([]);
-  const { pag, setPag } = useContext(Context);
+  const { pag, setPag, setActiveIndex } = useContext(Context);
   const a = ">";
   const b = "<";
 
@@ -33,6 +33,11 @@ const Search = () => {
       fetch(look, pag);
     }
   }, [pag]);
+
+  useEffect(() => {
+    setActiveIndex(5)
+  }
+  , [pag]);
 
   const handleSearch = (e) => {
     const query = e.target.value;

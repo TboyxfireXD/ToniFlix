@@ -7,7 +7,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const Now_Playing = () => {
   const [movies, setMovies] = useState([]);
-  const { pag, setPag } = useContext(Context);
+  const { pag, setPag, setActiveIndex } = useContext(Context);
   const a = ">";
   const b = "<";
 
@@ -31,7 +31,13 @@ const Now_Playing = () => {
     if (pag) {
       fetchMovies(pag); // Corrected to fetchMovies
     }
-  }, [pag]);
+  }
+  , [pag]);
+
+  useEffect(() => {
+    setActiveIndex(3)
+  }
+  , [pag]);
 
   const handleNextPage = () => {
     setPag((prevPag) => {

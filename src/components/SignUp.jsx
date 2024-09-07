@@ -7,6 +7,7 @@ function SignUp() {
   return (
     <div className="op">
       <div className="signUp">
+        <Navs />
         <div className="header">
           <h1>Sign Up/Log In</h1>
         </div>
@@ -36,6 +37,7 @@ function SignUp() {
             </Button>
           </Form>
         </div>
+        <div className="space"></div>
         <footer>
           <p>2024 Toniflix. All Rights Reserved.</p>
         </footer>

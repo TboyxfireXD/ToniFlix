@@ -30,6 +30,7 @@ const App = () => {
   const [videos, setVideos] = useState([]);
   const [pag, setPag] = useState(1);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndexs, setActiveIndexs] = useState(null);
 
   const handleCardClick = async (id) => {
     try {
@@ -109,7 +110,9 @@ const App = () => {
           pag,
           setPag,
           activeIndex,
+          activeIndexs,
           setActiveIndex,
+          setActiveIndexs,
           handleVideoClicks,
           handleVideoClick,
           videos,

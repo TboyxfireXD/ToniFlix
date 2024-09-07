@@ -7,7 +7,7 @@ import TVcards from "./TVcards";
 
 const On_the_air = () => {
   const [movies, setMovies] = useState([]);
-  const { pag, setPag } = useContext(Context);
+  const { pag, setPag, setActiveIndexs } = useContext(Context);
   const a = ">";
   const b = "<";
 
@@ -32,6 +32,10 @@ const On_the_air = () => {
       fetchMovies(pag); // Corrected to fetchMovies
     }
   }, [pag]);
+
+  useEffect(() => {
+    setActiveIndexs(7)
+  });
 
   const handleNextPage = () => {
     setPag((prevPag) => {

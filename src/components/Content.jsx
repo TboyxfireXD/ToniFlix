@@ -15,7 +15,7 @@ const Content = () => {
         </div>
         <div className="love">
           <div className="btn">
-            <Link to="/movies">
+            <Link to="/movies/upcoming">
               <button>
                 <h3>Our Movies</h3>
               </button>

@@ -7,7 +7,7 @@ import TVcards from "./TVcards";
 
 const Airing_today = () => {
   const [movies, setMovies] = useState([]);
-  const { pag, setPag } = useContext(Context);
+  const { pag, setPag, setActiveIndexs} = useContext(Context);
   const a = ">";
   const b = "<";
 
@@ -32,6 +32,10 @@ const Airing_today = () => {
       fetchMovies(pag); // Corrected to fetchMovies
     }
   }, [pag]);
+
+  useEffect(() => {
+    setActiveIndexs(6)
+  });
 
   const handleNextPage = () => {
     setPag((prevPag) => {

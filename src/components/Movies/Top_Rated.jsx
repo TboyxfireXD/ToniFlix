@@ -7,7 +7,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const Top_Rated = () => {
   const [movies, setMovies] = useState([]);
-  const { pag, setPag } = useContext(Context);
+  const { pag, setPag, setActiveIndex } = useContext(Context);
   const a = ">";
   const b = "<";
 
@@ -32,6 +32,11 @@ const Top_Rated = () => {
       fetchMovies(pag); // Corrected to fetchMovies
     }
   }, [pag]);
+
+  useEffect(() => {
+    setActiveIndex(2)
+  }
+  , [pag]);
 
   const handleNextPage = () => {
     setPag((prevPag) => {
