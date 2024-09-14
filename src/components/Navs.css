@@ -68,7 +68,7 @@
 
 .custom-navbar .nav-link,
 .custom-navbar{
-  color: #000; /* Initial text color */
+  color: #fff;
   transition: color 0.3s ease;
   padding: 15px;
 }
