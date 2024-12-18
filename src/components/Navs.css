@@ -66,14 +66,19 @@
   text-align: center;
 }
 
+.nav-link{
+  font-size: 16px;
+}
+
 .custom-navbar .nav-link,
 .custom-navbar{
   color: #fff;
-  transition: color 0.3s ease;
+  transition: transform 0.3s ease;
   padding: 15px;
 }
 
 .custom-navbar .nav-link:hover,
 .custom-navbar{
-  color: #fff; /* Turn white on hover */
+  font-size: 18px;
+  transition: ease 1s ease;;
 }
